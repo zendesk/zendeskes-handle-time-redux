@@ -1,0 +1,70 @@
+{
+  "author": {
+    "name" :"Joe May",
+    "email": "jmay@zendesk.com"
+  },
+
+  "parameters": [
+    {
+      "name": "handle_time_fields",
+      "type": "multiline",
+      "required": true
+    },
+    {
+      "name": "timehistory",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "start_threshold",
+      "type": "number"
+    },
+    {
+      "name": "date_format",
+      "type": "text"
+    },
+    {
+      "name": "history_timestamp_format",
+      "type": "text"
+    },
+    {
+      "name": "block_save_interval",
+      "type": "number"
+    },
+    {
+      "name": "active_on_new",
+      "type": "checkbox"
+    },
+    {
+      "name": "can_submit_custom_time",
+      "type": "checkbox"
+    },
+    {
+      "name": "can_submit_current_time",
+      "type": "checkbox"
+    },
+    {
+      "name": "hide_timer",
+      "type": "checkbox"
+    },
+    {
+      "name": "restrict_by_agent",
+      "type": "checkbox"
+    },
+    {
+      "name": "agent_restrictions",
+      "type": "multiline"
+    },
+    {
+      "name": "custom_time_format",
+      "type": "text"
+    }
+  ],
+
+  "frameworkVersion": "1.0",
+  "location": ["ticket_sidebar", "new_ticket_sidebar"],
+  "defaultLocale": "en",
+  "private": true,
+  "singleInstall": true,
+  "version": "0.9.8.4"
+}

@@ -1,0 +1,148 @@
+{{#if show_timer}}
+<div class="row-fluid">
+  <div class="span12 text-center">
+    {{#if logged}}
+    <span class="zenheading">{{t "timer.since_submission"}}</span>
+    {{else}}
+    <span class="zenheading">{{t "timer.since_opened"}}</span>
+    {{/if}}
+  </div>
+</div>
+
+<div class="row-fluid">
+  <div class="span12 text-center">
+    <span class="time-{{unique_id}} viewtime"></span>
+  </div>
+</div>
+{{else}}
+<div class="row-fluid">
+  <div class="span12 text-center">
+    <span class="zenheading">{{t "form.title"}}</span>
+  </div>
+</div>
+{{/if}}
+
+<div class="row-fluid submit-container">
+  <div id="form_error" class="alert alert-error" style="display: none;"><button type="button" class="close" data-dismiss="alert">&times;</button><span class="error"></span></div>
+  <form class="form-inline" id="panel">
+    <div class="control-group" id="ht_group">
+      <select data-zd-type="combo_select_menu">
+      {{#each groups}}
+      {{#if default_group}}
+    	  <option selected="selected" value="{{group_id}}">{{name}}</option>
+      {{else}}
+        <option value="{{group_id}}">{{name}}</option>
+      {{/if}}
+      {{/each}}
+      </select>
+    </div>
+
+    {{#if can_submit_both_time}}
+    <div class="well switch zen ht_toggle">
+      <input id="switch_auto" name="view" type="radio" checked>
+      <label id="switch_auto_label" for="switch_auto" onclick="">{{t "form.current_time"}}</label>
+      <input id="switch_manual" name="view" type="radio">
+      <label id="switch_manual_label" for="switch_manual" onclick="">{{t "form.custom_time"}}</label>
+      <span class="slide-button btn btn-inverse"></span>
+    </div>
+    <div id="ht_elapsed_form">
+      <a id="ht_submit_elapsed" class="ht_submit btn btn-info" href="#" style="width: 298px;">{{t "form.submit"}} {{t "form.current_time"}}</a>
+    </div>
+    <div id="ht_manual_form" style="display: none;">
+      <input id="ht_manual" type="text" style="width: 110px;" placeholder="Time in minutes">
+      <a id="ht_submit_manual" class="ht_submit btn btn-info" href="#" style="width: 170px;">{{t "form.submit"}} {{t "form.custom_time"}}</a>
+    </div>
+    {{else}}
+    {{#if can_submit_custom_time}}
+    <input id="ht_manual" type="text" style="width: 210px;" placeholder="Time in minutes">
+    <a id="ht_submit_manual" class="ht_submit btn btn-info" href="#" style="width: 70px;">{{t "form.submit"}}</a>
+    {{else}}
+    <a id="ht_submit_elapsed" class="ht_submit btn btn-info" href="#" style="width: 298px;">{{t "form.submit"}}</a>
+    {{/if}}
+    {{/if}}
+  </form>
+</div>
+
+<div class="row-fluid" style="padding: 20px 0px 0px 0px;">
+  <div class="span12 text-center">
+    <span class="zenheading">{{t "tabs.title"}}</span>
+  </div>
+  
+  <div class="span12" style="margin-left: 0px;">
+    <ul class="nav nav-tabs">
+      <li class="active"><a class="ht_tab" id="tab_totals">{{t "tabs.totals.title"}}</a></li>
+      <li><a class="ht_tab" id="tab_history">{{t "tabs.history.title"}}</a></li>
+    </ul>
+    
+    <div id="history-content"></div>
+  </div>
+</div>
+
+{{!-- Below is the modal that appears when a ticket is submitted without handle time --}}
+
+<div id="ht_modal" class="modal hide" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="width: 350px; margin: -250px 0 0 -175px;">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <span id="myModalLabel" class="zenheading">{{t "form.title"}}</span>
+  </div>
+  <div class="modal-body">
+    {{#if show_timer}}
+    <div class="row-fluid">
+      <div class="span12 text-center">
+        {{#if logged}}
+        <span class="zenheading">{{t "timer.since_submission"}}</span>
+        {{else}}
+        <span class="zenheading">{{t "timer.since_opened"}}</span>
+        {{/if}}
+      </div>
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span12 text-center">
+        <span class="time-{{unique_id}} viewtime"></span>
+      </div>
+    </div>
+    {{/if}}
+    
+    <div class="row-fluid submit-container">
+      <div id="form_modal_error" class="alert alert-error" style="display: none;"><button type="button" class="close" data-dismiss="alert">&times;</button></div>
+      <form class="form-inline" id="modal">
+        <div class="control-group" id="ht_modal_group">
+          <select data-zd-type="combo_select_menu">
+          {{#each groups}}
+          {{#if default_group}}
+        	  <option selected="selected" value="{{group_id}}">{{name}}</option>
+          {{else}}
+            <option value="{{group_id}}">{{name}}</option>
+          {{/if}}
+          {{/each}}
+          </select>
+        </div>
+    
+        {{#if can_submit_both_time}}
+        <div class="well switch zen ht_toggle">
+          <input id="switch_modal_auto" name="view" type="radio" checked>
+          <label id="switch_modal_auto_label" for="switch_modal_auto" onclick="">{{t "form.current_time"}}</label>
+          <input id="switch_modal_manual" name="view" type="radio">
+          <label id="switch_modal_manual_label" for="switch_modal_manual" onclick="">{{t "form.custom_time"}}</label>
+          <span class="slide-button btn btn-inverse"></span>
+        </div>
+        <div id="ht_modal_manual_form" style="display: none;">
+          <input id="ht_modal_manual" type="text" style="width: 110px;" placeholder="Time in minutes">
+          <a id="ht_modal_submit_manual" class="ht_modal_submit btn btn-info" href="#" style="width: 170px;">{{t "form.submit"}} {{t "form.custom_time"}}</a>
+        </div>
+        <div id="ht_modal_elapsed_form">
+          <a id="ht_modal_submit_elapsed" class="ht_modal_submit btn btn-info" href="#" style="width: 298px;">{{t "form.submit"}} {{t "form.current_time"}}</a>
+        </div>
+        {{else}}
+        {{#if can_submit_custom_time}}
+        <input id="ht_modal_manual" type="text" style="width: 210px;" placeholder="Time in minutes">
+        <a id="ht_modal_submit_manual" class="ht_modal_submit btn btn-info" href="#" style="width: 70px;">{{t "form.submit"}}</a>
+        {{else}}
+        <a id="ht_modal_submit_elapsed" class="ht_modal_submit btn btn-info" href="#" style="width: 298px;">{{t "form.submit"}}</a>
+        {{/if}}
+        {{/if}}
+      </form>
+    </div>
+  </div>
+</div>

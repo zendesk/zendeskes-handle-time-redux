@@ -1,0 +1,30 @@
+<table id="ht_history" class="table table-striped">
+  <colgroup width="35%" />
+  <colgroup width="25%" />
+  <colgroup width="20%" />
+  <colgroup width="20%" />
+  <thead>
+    <tr>
+      <th class="zenheading">{{t "tabs.history.labels.advocate"}}</th>
+      <th class="zenheading" style="text-align: center;">{{t "tabs.history.labels.group"}}</th>
+      <th class="zenheading" style="text-align: center;">{{t "tabs.history.labels.date"}}</th>
+      <th class="zenheading" style="text-align: center;">{{t "tabs.history.labels.work"}}</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each records}}
+    <tr>
+      <td>{{agent_name}}</td>
+      <td style="text-align: center;" title="{{group_name}}">{{group_short_name}}</td>
+      <td style="text-align: center;">{{formatted_date}}</td>
+      <td style="text-align: center;">{{time}}</td>
+      {{#if editable}}
+      <td style="text-align: center; padding-left: 0px;"><a class="ht_delete" id="{{id}}" style="color: red; font-weight: bold;" title="{{t "tabs.history.labels.delete"}}">&times;</a></td>
+      {{else}}
+      <td style="text-align: center;">&nbsp;</td>
+      {{/if}}
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

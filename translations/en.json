@@ -1,0 +1,108 @@
+{
+  "app" : {
+    "parameters" : {
+      "totaltime" : {
+        "label" : "Time Field",
+        "helpText" : "Place the text field ID to store the total time in"
+      },
+      "timehistory" : {
+        "label" : "History Field",
+        "helpText" : "Place the multi-line text field ID to store history of recorded time"
+      },
+      "start_threshold" : {
+        "label" : "Threshold Field",
+        "helpText" : "Seconds to wait before blocking the Save button (default: 15)"
+      },
+      "date_format" : {
+        "label" : "Date Format",
+        "helpText" : "Please enter one of the following date formats: dd-mm-yyyy, mm-dd-yyyy or yyyy-mm-dd"
+      },
+      "history_timestamp_format" : {
+        "label" : "Hisory Timestamp Format",
+        "helpText" : "The format that will be used to format the timestamp when a time is added (default: yyyy-mm-dd) yyyy=year, mm=month, dd=day, HH=hours, MM=minutes, SS=seconds"
+      },
+      "block_save_interval" : {
+        "label" : "Lock Interval",
+        "helpText" : "Seconds to wait after a time submission before blocking the Save button (default: 5)"
+      },
+      "active_on_new" : {
+        "label" : "Active on new ticket?",
+        "helpText" : "If checked, you will be able to register time for 'New' ticket"
+      },
+      "can_submit_custom_time" : {
+        "label" : "Agent can submit custom time?"
+      },
+      "can_submit_current_time" : {
+        "label" : "Agent can submit calculated time?"
+      },
+      "hide_timer" : {
+        "label" : "Hide the live timer in the app sidebar?"
+      },
+      "restrict_by_agent" : {
+        "label" : "Restrict to specific agents?"
+      },
+      "agent_restrictions" : {
+        "label" : "JSON object containing the agents to whom the app will be restricted:"
+      },
+      "custom_time_format" : {
+        "label" : "Custom Time Format",
+        "helpText" : "Choose a format for time submission. HH:MM or MM (default: HH:MM)."
+      }
+    },
+    
+    "description" :  "This is a simple time tracker that counts the time a ticket is open and requires Agents to submit this time before letting them them update ticket. ",
+    "name" :         "Handle Time app"
+  },
+
+  "total_time_spent" : "Total time spent on ticket",
+  "warning" : "Have you entered your comments?",
+  
+  "hidden" : "You're not authorized to view this app. If you believe you should have access, please consult your Zendesk admin(s).",
+  
+  "timer" : {
+    "since_opened" : "Time Elapsed Since Opening Ticket",
+    "since_submission" : "Time Elapsed Since Submitting Time"
+  },
+  
+  "errors" : {
+    "invalid_time" : "Handle time must be entered as the number of minutes (e.g. 3), HH:MM (e.g. 00:03), or HH:MM:SS (e.g. 00:03:00).",
+    "update_failed" : "Updating the handle time on this ticket failed. Please check with an admin if the problem persists.",
+    "settings_error" : "Please check the app settings to allow the agent to submit custom or actual time."
+  },
+  
+  "form" : {
+    "title" : "Log time spent handling this ticket",
+    "submit" : "Submit",
+    "current_time" : "Elapsed Time",
+    "custom_time" : "Manual Time"
+  },
+  
+  "submit" : {
+    "cancel" : "You're required to enter handle time in order to submit your update.",
+    "timeout" : "Your submission has been canceled because you didn't submit handle time within 20 seconds. Please add some handle time and re-submit."
+  },
+  
+  "tabs" : {
+    "title" : "Handle Time History",
+
+    "totals" : {
+      "title" : "Totals",
+      "labels" : {
+        "group" : "Group",
+        "time" : "Total Time",
+        "minutes" : "min"
+      }
+    },
+    
+    "history" : {
+      "title" : "History",
+      "labels" : {
+        "advocate" : "Advocate",
+        "group" : "Group",
+        "date" : "Date",
+        "work" : "Work",
+        "delete" : "Delete this handle time"
+      }
+    }
+  }
+}

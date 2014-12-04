@@ -1,0 +1,18 @@
+<table id="ht_totals" class="table table-striped">
+  <colgroup width="70%" />
+  <colgroup width="30%" />
+  <thead>
+    <tr>
+      <th class="zenheading">{{t "tabs.totals.labels.group"}}</th>
+      <th class="zenheading" style="text-align: center;">{{t "tabs.totals.labels.time"}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each records}}
+    <tr>
+      <td>{{group_name}}</td>
+      <td style="text-align: center;">{{total_time}} {{t "tabs.totals.labels.minutes"}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
